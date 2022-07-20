@@ -23,9 +23,7 @@ galleryItemClass.addEventListener("click", (event) => {
   event.preventDefault();
   const instance = basicLightbox.create(`
   <div class="modal">
-    <img src="${event.target.getAttribute(
-      "data-source"
-    )}" width="1200" height="800">
+    <img src="${event.target.getAttribute("data-source")}">
   </div>
       `);
   instance.show();
