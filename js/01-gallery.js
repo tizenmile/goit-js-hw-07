@@ -19,7 +19,7 @@ const showGallery = (galleryItem) => {
 };
 showGallery(galleryItems);
 
-galleryItemClass.addEventListener("click", (event) => {
+function galleryShow(event) {
   event.preventDefault();
   const instance = basicLightbox.create(`
   <div class="modal">
@@ -29,10 +29,17 @@ galleryItemClass.addEventListener("click", (event) => {
   </div>
       `);
   instance.show();
-  if (basicLightbox.visible()) {
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") instance.close();
-    });
-  }
   instance.element().addEventListener("click", (event) => instance.close());
-});
+}
+galleryItemClass.addEventListener("click", galleryShow);
+
+function name1(event) {
+  console.log(event);
+  if (basicLightbox.visible()) {
+    if (event.key === "Escape") {
+      instance.close();
+      // document.removeEventListener("keydown", galleryShow);
+    }
+  }
+}
+document.addEventListener("keydown", name1);
