@@ -18,25 +18,13 @@ const showGallery = (galleryItem) => {
   });
 };
 showGallery(galleryItems);
+
 galleryItemClass.addEventListener("click", (event) => {
   event.preventDefault();
   const instance = basicLightbox.create(`
-  <div class="modal">
-    <img src="${event.target.getAttribute(
-      "data-source"
-    )}" width="100%" height="auto">
-  </div>
-      `);
+  <div class="modal"><img src="${event.target.getAttribute("data-source")}" width="100%" height="auto"></div>`);
   instance.show();
-  instance.element().addEventListener("click", () => instance.close());
-  if (instance.show()) hideInstance(instance);
-});
-
-const hideInstance = function key(instance) {
-  document.addEventListener("keydown", function closeGallery(event) {
-    if (event.key === "Escape") {
+  instance.element().addEventListener("click", function () {
       instance.close();
-      document.removeEventListener("keydown", closeGallery);
-    }
   });
-};
+});
